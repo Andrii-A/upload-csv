@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap.scss";
+
+body{
+  color: white;
+}
+
+
+
+////////////////////// caret for ASC/DESC button
+.caret {
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-color: inherit;
+
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+
+    position: absolute;
+    left: 7px;
+  }
+}
+
+.caret--up:after {
+  transform: rotate(-135deg);
+  top: 11px;
+}
+
+.caret--down:after {
+  transform: rotate(45deg);
+  top: 8px;
+}

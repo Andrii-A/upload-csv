@@ -1,0 +1,67 @@
+<div class="container">
+
+  <h1 *ngIf="showMainLabel" class="h4">Correlation between date of birth and issues number</h1>
+
+
+  <div class="svg--wrapper">
+    <div id="my_dataviz"></div>
+  </div>
+
+
+  <div class="row file-meta">
+    <div class="col-sm-3 file-meta__cell">
+
+      <input type="file" name="file" id="file" class="input-file" (change)="fileChangeListener($event)" accept=".csv"/>
+      <label for="file" class="btn btn-light">Upload a CSV file</label>
+
+      <div *ngIf="meta && tableBody" class="file-meta__cell__info">
+        <div>Name: <strong>{{meta.name}}</strong></div>
+        <div>Modified: <strong>{{meta.lastModifiedDate | date}}</strong></div>
+        <div>File Size: <strong>{{meta.size | filesize}}</strong></div>
+        <div>Rows: <strong>{{tableBody.length}}</strong></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 file-meta__cell">
+      <div *ngIf="!tableHeader" class="file-meta__cell__instructions">
+        We expect a file to have 4 columns with 3rd and 4th to have a number from 1 to 100 and a date respectively.
+      </div>
+
+      <div *ngIf="tableHeader && tableHeader.length > 2">
+        <button class="btn btn-light toggle-order-btn" (click)="toggleSortOrder()">
+          Order By Issues Count
+          <span *ngIf="sortOrder"
+                [class]="'caret ' + (sortOrder.toLowerCase() === 'asc' ? 'caret--down' : 'caret--up')"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="loading" class="row spinner--wrapper">
+    <div class="spinner-border text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="noFileSelected" class="alert alert-danger" role="alert">
+    You didn't select any file!
+  </div>
+
+
+  <table *ngIf="tableHeader" class="table table-dark table-sm table-hover">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let cell of tableHeader">{{cell}}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let row of tableBody">
+      <td *ngFor="let cell of row">{{cell}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
