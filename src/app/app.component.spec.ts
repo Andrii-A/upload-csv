@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Papa } from 'ngx-papaparse';
 import { mockData } from './common/helpers/mockData';
-import { TestHelperModule } from './common/helpers/test.helpers.module';
+import { TestHelperModule } from './common/helpers/test-helpers.module';
 
 const SpyPapa = jasmine.createSpyObj('Papa', ['parse']);
 

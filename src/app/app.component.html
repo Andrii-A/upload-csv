@@ -1,11 +1,6 @@
 <div class="container">
 
-  <h1 *ngIf="showMainLabel" class="h4">Correlation between date of birth and issues number</h1>
-
-
-  <div class="svg--wrapper">
-    <div id="my_dataviz"></div>
-  </div>
+  <app-chart *ngIf="chartModel" [model]="chartModel"></app-chart>
 
 
   <div class="row file-meta">

@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FilesizePipe } from './common/pipes/filesize.pipe';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilesizePipe
+    FilesizePipe,
+    ChartComponent
   ],
   imports: [
     BrowserModule

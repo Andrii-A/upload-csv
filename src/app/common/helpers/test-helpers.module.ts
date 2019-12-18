@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, NgModule } from '@angular/core';
+import { Pipe, PipeTransform, NgModule, Component, Input } from '@angular/core';
 
 // ------------ MOCK PIPES
 @Pipe({
@@ -12,10 +12,24 @@ export class MockFilesizePipe implements PipeTransform {
 
 
 
+// ------------ MOCK COMPONENTS
+
+@Component({
+  selector: 'app-chart',
+  template: '<p>Mock ChartComponent</p>'
+})
+export class MockChartComponent {
+  @Input() model;
+}
+
+
+
+
 
 
 const allDeps = [
   MockFilesizePipe,
+  MockChartComponent,
 ];
 
 
