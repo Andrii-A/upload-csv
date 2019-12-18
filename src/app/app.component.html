@@ -1,11 +1,9 @@
 <div class="container">
-
   <app-chart *ngIf="chartModel" [model]="chartModel"></app-chart>
 
 
   <div class="row file-meta">
     <div class="col-sm-3 file-meta__cell">
-
       <input type="file" name="file" id="file" class="input-file" (change)="fileChangeListener($event)" accept=".csv"/>
       <label for="file" class="btn btn-light">Upload a CSV file</label>
 
@@ -33,17 +31,6 @@
   </div>
 
 
-  <div *ngIf="loading" class="row spinner--wrapper">
-    <div class="spinner-border text-light" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-  <div *ngIf="noFileSelected" class="alert alert-danger" role="alert">
-    You didn't select any file!
-  </div>
-
-
   <table *ngIf="tableHeader" class="table table-dark table-sm table-hover">
     <thead>
     <tr>
@@ -57,6 +44,13 @@
     </tr>
     </tbody>
   </table>
+
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <div *ngIf="noFileSelected" class="alert alert-danger" role="alert">
+    You didn't select any file!
+  </div>
 
 
 </div>

@@ -14,7 +14,6 @@ export type fileType = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isValid: boolean;
   loading: boolean;
   noFileSelected: boolean;
 
@@ -30,12 +29,11 @@ export class AppComponent {
 
   fileChangeListener($event: any): void {
     this.chartModel = null;
-
-    this.meta = $event.target.files[ 0 ];
-
-    const files = $event.target.files;
     this.loading = true;
     this.noFileSelected = false;
+
+    this.meta = $event.target.files[ 0 ];
+    const files = $event.target.files;
 
     if (files !== null && files !== undefined && files.length > 0) {
       const reader: FileReader = new FileReader();
@@ -51,14 +49,12 @@ export class AppComponent {
         // VALIDATE PARSED CSV FILE
         if (results !== null && results !== undefined && results.data !== null &&
           results.data !== undefined && results.data.length > 0 && results.errors.length === 0) {
-          this.isValid = true;
           this.tableHeader = results.data[ 0 ];
           this.tableBody = [...results.data.slice(1, results.data.length)];
         } else {
-          this.isValid = false;
           this.noFileSelected = false;
           this.chartModel = null;
-          console.log('Errors Parsing CSV File >>>', results.errors);
+          console.log('Errors Parsing CSV File >>>', results && results.errors ? results.errors : '');
         }
       };
     } else {
@@ -66,12 +62,12 @@ export class AppComponent {
       this.meta = undefined;
       this.tableHeader = undefined;
       this.tableBody = undefined;
-      this.isValid = false;
       this.noFileSelected = true;
       this.chartModel = null;
     }
   }
 
+  
   toggleSortOrder() {
     if (this.sortOrder === '' || this.sortOrder === 'ASC') {
       this.sortOrder = 'DESC';
@@ -81,9 +77,6 @@ export class AppComponent {
       this.tableBody.sort((a, b) => a[ 2 ] - b[ 2 ]);
     }
   }
-
-
-
 }
 
 

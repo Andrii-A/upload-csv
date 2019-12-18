@@ -22,6 +22,12 @@ export class MockChartComponent {
   @Input() model;
 }
 
+@Component({
+  selector: 'app-spinner',
+  template: '<p>Mock SpinnerComponent</p>'
+})
+export class MockSpinnerComponent {
+}
 
 
 
@@ -30,6 +36,7 @@ export class MockChartComponent {
 const allDeps = [
   MockFilesizePipe,
   MockChartComponent,
+  MockSpinnerComponent
 ];
 
 
