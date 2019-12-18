@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { mapDate } from '../../common/helpers/helpers';
+import { mapDate } from '../common/helpers/helpers';
 
 
 @Component({

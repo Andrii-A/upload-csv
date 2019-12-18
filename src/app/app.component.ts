@@ -67,7 +67,7 @@ export class AppComponent {
     }
   }
 
-  
+
   toggleSortOrder() {
     if (this.sortOrder === '' || this.sortOrder === 'ASC') {
       this.sortOrder = 'DESC';
