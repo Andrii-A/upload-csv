@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FilesizePipe } from './filesize.pipe';
+import { FilesizePipe } from './common/pipes/filesize.pipe';
 
 @NgModule({
   declarations: [

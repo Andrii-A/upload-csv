@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
 import * as d3 from 'd3';
 
+import {mapDate} from './common/helpers/helpers';
+
 export type fileType = {
   lastModifiedDate: Date,
   name: string,
@@ -94,7 +96,7 @@ export class AppComponent {
     const unsortedData = rowData.map((row: any) => {
       return {
         value: row[ 'Issue count' ],
-        year: this.mapDate(row[ 'Date of birth' ]),
+        year: mapDate(row[ 'Date of birth' ]),
         sortingIndex: Date.parse(row[ 'Date of birth' ]),
       };
     });
@@ -163,10 +165,7 @@ export class AppComponent {
   }
 
 
-  mapDate(DateString){
-    const d = new Date(DateString);
-    return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
-  };
+
 
 
 }
